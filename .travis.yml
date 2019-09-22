@@ -3,14 +3,13 @@ dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
 script:
-- mkdir _build
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build tex/cv.tex
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory . tex/main.tex
 deploy:
   provider: releases
   api_key:
     secure: [YOUR KEY]
   file:
-  - _build/cv_1.pdf
+  - main.pdf
   skip_cleanup: true
   on:
     tags: true
